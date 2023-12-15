@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище GIBDDDatabaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Автомобили">
+    <Key>
+      <PropertyRef Name="НомерАвто" />
+    </Key>
+    <Property Name="НомерАвто" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Марка" Type="nvarchar" MaxLength="50" />
+    <Property Name="Модель" Type="nvarchar" MaxLength="50" />
+    <Property Name="Цвет" Type="nvarchar" MaxLength="20" />
+    <Property Name="ГодВыпуска" Type="int" />
+    <Property Name="ДатаРегистрации" Type="date" />
+    <Property Name="Владелец" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Взыскания">
+    <Key>
+      <PropertyRef Name="КодНарушения" />
+      <PropertyRef Name="НомерВУ" />
+    </Key>
+    <Property Name="КодНарушения" Type="int" Nullable="false" />
+    <Property Name="ДатаВремяНарушения" Type="datetime" />
+    <Property Name="НомерВУ" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="РайонНарушения" Type="nvarchar" MaxLength="50" />
+    <Property Name="РазмерШтрафа" Type="nvarchar" MaxLength="50" />
+    <Property Name="ОплаченШтраф" Type="bit" />
+    <Property Name="СрокЛишенияПрав" Type="int" />
+    <Property Name="БазоваяВеличина" Type="int" />
+    <Property Name="ЛичныйНомерИнспектора" Type="int" />
+  </EntityType>
+  <EntityType Name="Водители">
+    <Key>
+      <PropertyRef Name="НомерВУ" />
+    </Key>
+    <Property Name="НомерВУ" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ФИО" Type="nvarchar" MaxLength="100" />
+    <Property Name="Адрес" Type="nvarchar" MaxLength="100" />
+    <Property Name="Телефон" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Инспектора">
+    <Key>
+      <PropertyRef Name="ЛичныйНомерИнспектора" />
+    </Key>
+    <Property Name="ЛичныйНомерИнспектора" Type="int" Nullable="false" />
+    <Property Name="ФИОИнспектора" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="НарушенияВодителей">
+    <Key>
+      <PropertyRef Name="КодНарушения" />
+      <PropertyRef Name="НомерВУ" />
+    </Key>
+    <Property Name="КодНарушения" Type="int" Nullable="false" />
+    <Property Name="НомерВУ" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="ДатаВремяНарушения" Type="datetime" />
+    <Property Name="РайонНарушения" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="НарушенияПДД">
+    <Key>
+      <PropertyRef Name="КодНарушения" />
+    </Key>
+    <Property Name="КодНарушения" Type="int" Nullable="false" />
+    <Property Name="ВидНарушения" Type="nvarchar" MaxLength="100" />
+    <Property Name="ШтрафДиапазон" Type="nvarchar" MaxLength="50" />
+    <Property Name="Предупреждение" Type="bit" />
+    <Property Name="СрокЛишенияПрав" Type="int" />
+  </EntityType>
+  <Association Name="FK__Автомобил__Владе__06CD04F7">
+    <End Role="Водители" Type="Self.Водители" Multiplicity="0..1" />
+    <End Role="Автомобили" Type="Self.Автомобили" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Водители">
+        <PropertyRef Name="НомерВУ" />
+      </Principal>
+      <Dependent Role="Автомобили">
+        <PropertyRef Name="Владелец" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Взыскания__КодНа__114A936A">
+    <End Role="НарушенияПДД" Type="Self.НарушенияПДД" Multiplicity="1" />
+    <End Role="Взыскания" Type="Self.Взыскания" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="НарушенияПДД">
+        <PropertyRef Name="КодНарушения" />
+      </Principal>
+      <Dependent Role="Взыскания">
+        <PropertyRef Name="КодНарушения" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Взыскания__Личны__1332DBDC">
+    <End Role="Инспектора" Type="Self.Инспектора" Multiplicity="0..1" />
+    <End Role="Взыскания" Type="Self.Взыскания" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Инспектора">
+        <PropertyRef Name="ЛичныйНомерИнспектора" />
+      </Principal>
+      <Dependent Role="Взыскания">
+        <PropertyRef Name="ЛичныйНомерИнспектора" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Взыскания__Номер__123EB7A3">
+    <End Role="Водители" Type="Self.Водители" Multiplicity="1" />
+    <End Role="Взыскания" Type="Self.Взыскания" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Водители">
+        <PropertyRef Name="НомерВУ" />
+      </Principal>
+      <Dependent Role="Взыскания">
+        <PropertyRef Name="НомерВУ" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Нарушения__КодНа__0D7A0286">
+    <End Role="НарушенияПДД" Type="Self.НарушенияПДД" Multiplicity="1" />
+    <End Role="НарушенияВодителей" Type="Self.НарушенияВодителей" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="НарушенияПДД">
+        <PropertyRef Name="КодНарушения" />
+      </Principal>
+      <Dependent Role="НарушенияВодителей">
+        <PropertyRef Name="КодНарушения" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Нарушения__Номер__0E6E26BF">
+    <End Role="Водители" Type="Self.Водители" Multiplicity="1" />
+    <End Role="НарушенияВодителей" Type="Self.НарушенияВодителей" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Водители">
+        <PropertyRef Name="НомерВУ" />
+      </Principal>
+      <Dependent Role="НарушенияВодителей">
+        <PropertyRef Name="НомерВУ" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище GIBDDDatabaseModelContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Автомобили" EntityType="Self.Автомобили" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Взыскания" EntityType="Self.Взыскания" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Водители" EntityType="Self.Водители" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Инспектора" EntityType="Self.Инспектора" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="НарушенияВодителей" EntityType="Self.НарушенияВодителей" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="НарушенияПДД" EntityType="Self.НарушенияПДД" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Автомобил__Владе__06CD04F7" Association="Self.FK__Автомобил__Владе__06CD04F7">
+      <End Role="Водители" EntitySet="Водители" />
+      <End Role="Автомобили" EntitySet="Автомобили" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Взыскания__КодНа__114A936A" Association="Self.FK__Взыскания__КодНа__114A936A">
+      <End Role="НарушенияПДД" EntitySet="НарушенияПДД" />
+      <End Role="Взыскания" EntitySet="Взыскания" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Взыскания__Личны__1332DBDC" Association="Self.FK__Взыскания__Личны__1332DBDC">
+      <End Role="Инспектора" EntitySet="Инспектора" />
+      <End Role="Взыскания" EntitySet="Взыскания" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Взыскания__Номер__123EB7A3" Association="Self.FK__Взыскания__Номер__123EB7A3">
+      <End Role="Водители" EntitySet="Водители" />
+      <End Role="Взыскания" EntitySet="Взыскания" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Нарушения__КодНа__0D7A0286" Association="Self.FK__Нарушения__КодНа__0D7A0286">
+      <End Role="НарушенияПДД" EntitySet="НарушенияПДД" />
+      <End Role="НарушенияВодителей" EntitySet="НарушенияВодителей" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Нарушения__Номер__0E6E26BF" Association="Self.FK__Нарушения__Номер__0E6E26BF">
+      <End Role="Водители" EntitySet="Водители" />
+      <End Role="НарушенияВодителей" EntitySet="НарушенияВодителей" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище GIBDDDatabaseModelContainer" CdmEntityContainer="GIBDDDatabaseEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="GIBDDDatabaseModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Автомобили">
+      <EntityTypeMapping TypeName="GIBDDDatabaseModel.Автомобили">
+        <MappingFragment StoreEntitySet="Автомобили">
+          <ScalarProperty Name="НомерАвто" ColumnName="НомерАвто" />
+          <ScalarProperty Name="Марка" ColumnName="Марка" />
+          <ScalarProperty Name="Модель" ColumnName="Модель" />
+          <ScalarProperty Name="Цвет" ColumnName="Цвет" />
+          <ScalarProperty Name="ГодВыпуска" ColumnName="ГодВыпуска" />
+          <ScalarProperty Name="ДатаРегистрации" ColumnName="ДатаРегистрации" />
+          <ScalarProperty Name="Владелец" ColumnName="Владелец" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Взыскания">
+      <EntityTypeMapping TypeName="GIBDDDatabaseModel.Взыскания">
+        <MappingFragment StoreEntitySet="Взыскания">
+          <ScalarProperty Name="КодНарушения" ColumnName="КодНарушения" />
+          <ScalarProperty Name="ДатаВремяНарушения" ColumnName="ДатаВремяНарушения" />
+          <ScalarProperty Name="НомерВУ" ColumnName="НомерВУ" />
+          <ScalarProperty Name="РайонНарушения" ColumnName="РайонНарушения" />
+          <ScalarProperty Name="РазмерШтрафа" ColumnName="РазмерШтрафа" />
+          <ScalarProperty Name="ОплаченШтраф" ColumnName="ОплаченШтраф" />
+          <ScalarProperty Name="СрокЛишенияПрав" ColumnName="СрокЛишенияПрав" />
+          <ScalarProperty Name="БазоваяВеличина" ColumnName="БазоваяВеличина" />
+          <ScalarProperty Name="ЛичныйНомерИнспектора" ColumnName="ЛичныйНомерИнспектора" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Водители">
+      <EntityTypeMapping TypeName="GIBDDDatabaseModel.Водители">
+        <MappingFragment StoreEntitySet="Водители">
+          <ScalarProperty Name="НомерВУ" ColumnName="НомерВУ" />
+          <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+          <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Инспектора">
+      <EntityTypeMapping TypeName="GIBDDDatabaseModel.Инспектора">
+        <MappingFragment StoreEntitySet="Инспектора">
+          <ScalarProperty Name="ЛичныйНомерИнспектора" ColumnName="ЛичныйНомерИнспектора" />
+          <ScalarProperty Name="ФИОИнспектора" ColumnName="ФИОИнспектора" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="НарушенияВодителей">
+      <EntityTypeMapping TypeName="GIBDDDatabaseModel.НарушенияВодителей">
+        <MappingFragment StoreEntitySet="НарушенияВодителей">
+          <ScalarProperty Name="КодНарушения" ColumnName="КодНарушения" />
+          <ScalarProperty Name="НомерВУ" ColumnName="НомерВУ" />
+          <ScalarProperty Name="ДатаВремяНарушения" ColumnName="ДатаВремяНарушения" />
+          <ScalarProperty Name="РайонНарушения" ColumnName="РайонНарушения" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="НарушенияПДД">
+      <EntityTypeMapping TypeName="GIBDDDatabaseModel.НарушенияПДД">
+        <MappingFragment StoreEntitySet="НарушенияПДД">
+          <ScalarProperty Name="КодНарушения" ColumnName="КодНарушения" />
+          <ScalarProperty Name="ВидНарушения" ColumnName="ВидНарушения" />
+          <ScalarProperty Name="ШтрафДиапазон" ColumnName="ШтрафДиапазон" />
+          <ScalarProperty Name="Предупреждение" ColumnName="Предупреждение" />
+          <ScalarProperty Name="СрокЛишенияПрав" ColumnName="СрокЛишенияПрав" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

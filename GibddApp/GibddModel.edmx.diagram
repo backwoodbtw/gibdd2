@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ba2ce0266e7a4ad58538fbef64141f23" Name="Diagram1">
+        <EntityTypeShape EntityType="GIBDDDatabaseModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GIBDDDatabaseModel.Автомобили" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GIBDDDatabaseModel.Взыскания" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GIBDDDatabaseModel.Водители" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GIBDDDatabaseModel.Инспектора" Width="1.5" PointX="3.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GIBDDDatabaseModel.НарушенияВодителей" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GIBDDDatabaseModel.НарушенияПДД" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="GIBDDDatabaseModel.FK__Автомобил__Владе__06CD04F7" ManuallyRouted="false" />
+        <AssociationConnector Association="GIBDDDatabaseModel.FK__Взыскания__КодНа__114A936A" ManuallyRouted="false" />
+        <AssociationConnector Association="GIBDDDatabaseModel.FK__Взыскания__Личны__1332DBDC" ManuallyRouted="false" />
+        <AssociationConnector Association="GIBDDDatabaseModel.FK__Взыскания__Номер__123EB7A3" ManuallyRouted="false" />
+        <AssociationConnector Association="GIBDDDatabaseModel.FK__Нарушения__Номер__0E6E26BF" ManuallyRouted="false" />
+        <AssociationConnector Association="GIBDDDatabaseModel.FK__Нарушения__КодНа__0D7A0286" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
